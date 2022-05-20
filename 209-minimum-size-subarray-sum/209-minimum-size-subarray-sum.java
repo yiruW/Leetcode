@@ -5,7 +5,7 @@ class Solution {
         for(int fast = 0; fast < nums.length; fast ++){
             sum += nums[fast];
             while(sum >= target){
-                result = result < fast-slow+1 ? result : fast-slow+1;
+                result = Math.min(result, fast-slow+1);
                 sum -= nums[slow];
                 slow ++;
             }
