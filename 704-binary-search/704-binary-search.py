@@ -4,16 +4,15 @@ class Solution:
         # since the array is ordered and no deplicate
         # we could apply binary search
         left = 0
-        right = len(nums)-1
-        
+        right = len(nums) - 1
         while (left <= right):
-            middle = left + (right - left) // 2
-            if (nums[middle] == target):
-                return middle
-            if (nums[middle] < target):
-                left = middle + 1
-            elif (nums[middle] > target):
-                right = middle - 1
+            mid = left + (right - left) // 2
+            if target > nums[mid]:
+                left = mid + 1
+            elif target < nums[mid]:
+                right = mid - 1
+            else:
+                return mid
             
         return -1
             
