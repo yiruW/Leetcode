@@ -4,17 +4,14 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-#  preorder: root, left, right
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         result = []
-        def preOrder(node):
+        def traversal( node: TreeNode ):
             if node == None:
                 return
             result.append(node.val)
-            preOrder(node.left)
-            preOrder(node.right)
-        preOrder(root)
+            traversal(node.left)
+            traversal(node.right)
+        traversal(root)
         return result
-        
