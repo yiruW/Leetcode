@@ -6,14 +6,12 @@
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        if not root.left and not root.right:
-            return 1
-
-        min_depth = 10**9
+        if not root: return 0
+        if not root.left and not root.right: return 1
+            
+        result = 10**9
         if root.left:
-            min_depth = min(self.minDepth(root.left), min_depth) # 获得左子树的最小高度
+            result = min(result, self.minDepth(root.left))
         if root.right:
-            min_depth = min(self.minDepth(root.right), min_depth) # 获得右子树的最小高度
-        return min_depth + 1
+            result = min(result, self.minDepth(root.right))
+        return result + 1
