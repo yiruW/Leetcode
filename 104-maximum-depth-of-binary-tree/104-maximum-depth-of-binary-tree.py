@@ -4,17 +4,13 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-#  backTracking
-
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-
-        def findMax(node):
-            if not node:
-                return 0
-            leftDepth = findMax(node.left)
-            rightDepth = findMax(node.right)
-            return 1 + max(leftDepth, rightDepth)
         
-        return findMax(root)
+        def findDepth(node: TreeNode):
+            if not node: return 0
+            leftDepth = 1 + findDepth(node.left)
+            rightDepth = 1 + findDepth(node.right)
+            return max(leftDepth, rightDepth)
         
+        return findDepth(root)
